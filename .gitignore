@@ -1,0 +1,4 @@
+*.pyc
+*~
+ecomm/config/settings/secret.py
+.idea
