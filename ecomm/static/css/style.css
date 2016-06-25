@@ -1891,7 +1891,8 @@ a.add-re:hover {
 }
 
 .account-top input[type="text"],
-.account-top textarea,.account-top input[type="password"] {
+.account-top textarea,.account-top input[type="password"],
+.account-top input[type="email"]{
   padding: 1em;
   width: 100%;
   background: none;

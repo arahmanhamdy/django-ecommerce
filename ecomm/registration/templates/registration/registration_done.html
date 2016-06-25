@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{%block content %}
+<div class="grow">
+    <div class="container">
+        <h2>Registration Completed</h2>
+    </div>
+</div>
+<div class="container text-center">
+    <h4>
+        You have successfully registered a new account.
+        You can <a href="{%url 'login'%}">Login</a> now!
+    </h4>
+</div>
+
+{% endblock %}

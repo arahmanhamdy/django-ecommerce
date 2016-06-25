@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{%block content %}
+<div class="grow">
+    <div class="container">
+        <h2>Login</h2>
+    </div>
+</div>
+
+<div class="container">
+    <div class="account">
+        <div class="account-pass">
+            <div class="col-md-8 account-top">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" value="Log in"/>
+                    <input type="hidden" name="next" value="{{ next }}"/>
+                </form>
+
+                <p>
+                    Forgot password?
+                    <a href="{% url 'password_reset' %}">Reset it</a>!
+                </p>
+
+                <p>
+                    Not member?
+                    <a href="{% url 'register' %}">Register</a>!</p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

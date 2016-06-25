@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'registration'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -110,3 +111,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
+
+# Auth Settings
+LOGIN_URL = '/users/login/'
+LOGIN_REDIRECT_URL = '/'
