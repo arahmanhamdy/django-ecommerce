@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{%block content %}
+<div class="grow">
+    <div class="container">
+        <h2>Logout</h2>
+    </div>
+</div>
+<div class="container text-center">
+    <h4>
+        You have been loggedout.
+        You can <a href="{%url 'login'%}">Login</a> again!
+    </h4>
+</div>
+
+{% endblock %}
