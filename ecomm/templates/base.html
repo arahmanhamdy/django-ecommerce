@@ -68,6 +68,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <ul class="memenu skyblue">
                     {% if user.is_authenticated %}
                         <li><a class="color4" href="{% url 'logout' %}">Logout</a></li>
+                        <li><a class="color4" href="{% url 'password_change' %}">Change Password</a></li>
                     {% else %}
                         <li><a class="color4" href="{% url 'login' %}">Login</a></li>
                         <li><a class="color4" href="{% url 'register' %}">Register</a></li>
