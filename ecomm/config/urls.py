@@ -15,9 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+import registration.urls
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^users/', include('django.contrib.auth.urls')),
-    url(r'^register/', include('registration.urls'))
+    url(r'^users/', include(registration.urls)),
 ]
