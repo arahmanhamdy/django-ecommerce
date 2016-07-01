@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{%block title%}{{site.}} - {{product.name}}{%endblock%}
+{% block css %}
+<link rel="stylesheet" href="{% static 'products/lib/css/flexslider.css'%}"/>
+{% endblock %}
+{%block content%}
+<!-- grow -->
+<div class="grow">
+    <div class="container">
+        <h2>{{product.name}}</h2>
+    </div>
+</div>
+<!-- grow -->
+<div class="product">
+    <div class="container">
+
+        <div class="product-price1">
+            <div class="top-sing">
+                <div class="col-md-7 single-top">
+                    <div class="flexslider">
+                        <ul class="slides">
+                            {% for obj in product.productimage_set.all %}
+                            <li data-thumb="{{obj.image.url}}">
+                                <div class="thumb-image">
+                                    <img src="{{obj.image.url}}" data-imagezoom="true" class="img-responsive">
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="col-md-5 single-top-in simpleCart_shelfItem">
+                    <div class="single-para ">
+                        <h4 class="item_name">{{product.name}}</h4>
+                        <h4 class="item_id hidden">{{product.id}}</h4>
+                        <span class="hidden item_image">{{product.productimage_set.all.0.image.url}}</span>
+                        <h5 class="item_price">{{product.price}}</h5>
+
+                        <p>{{product.description}}</p>
+
+                        <a href="#" class="add-cart item_add">ADD TO CART</a>
+
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+    </div>
+</div>
+{% endblock %}
+{% block script%}
+<script src="{% static 'products/lib/js/imagezoom.js'%}"></script>
+<script src="{% static 'products/lib/js/jquery.flexslider.js'%}"></script>
+<script src="{% static 'products/js/script.js'%}"></script>
+{%endblock%}
