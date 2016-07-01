@@ -43,3 +43,7 @@ def contact(request):
 
 def contact_success(request):
     return render(request, "pages/contact-complete.html")
+
+
+def handle_404_view(request):
+    return render(request, "pages/404.html")
