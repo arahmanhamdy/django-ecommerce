@@ -5,7 +5,7 @@ from .forms import MyUserCreationForm
 
 def register(request):
     if request.user.is_authenticated():
-        return redirect('index:index')
+        return redirect('pages:index')
     form = MyUserCreationForm()
     if request.method == "POST":
         form = MyUserCreationForm(request.POST)
