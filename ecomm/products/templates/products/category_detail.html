@@ -11,6 +11,7 @@
 <!-- grow -->
 <div class="pro-du">
     <div class="container">
+        {% if products %}
         <div class="col-md-9 product1">
             <div class="bottom-product">
                 {% for product in products|slice:":4"%}
@@ -70,7 +71,9 @@
                 {% endfor %}
             </ul>
         </div>
-
+        {% else %}
+            <br/><h3>This category haven't any products yet.</h3><br/>
+        {% endif %}
     </div>
 </div>
 <!-- products -->
