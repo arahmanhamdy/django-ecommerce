@@ -29,5 +29,5 @@ urlpatterns = [
     url(r'^orders/', include(orders.urls, namespace='orders')),
     url(r'^', include(pages.urls, namespace='pages')),
 ]
-
-urlpatterns += static(settings.base.MEDIA_URL, document_root=settings.development.MEDIA_ROOT)
+if settings.base.DEBUG:
+    urlpatterns += static(settings.base.MEDIA_URL, document_root=settings.development.MEDIA_ROOT)
