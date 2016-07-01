@@ -34,6 +34,9 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = (
     'registration',
+    'products',
+    'orders',
+    'pages',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -68,6 +71,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'pages.context_processors.layout_processor'
             ],
         },
     },
@@ -115,3 +119,16 @@ STATICFILES_DIRS = [
 # Auth Settings
 LOGIN_URL = '/users/login/'
 LOGIN_REDIRECT_URL = '/'
+
+# Media Settings for uploaded files
+MEDIA_URL = '/media/'
+
+# Site Name
+SITE_NAME = 'SeeChic'
+
+# Email Settings
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = secret.EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = secret.EMAIL_HOST_PASSWORD
