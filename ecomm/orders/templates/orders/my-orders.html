@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{%block title%}{{site_name}} - checkout{%endblock%}
+{%block content%}
+<!-- grow -->
+<div class="grow">
+    <div class="container">
+        <h2>My Orders</h2>
+    </div>
+</div>
+<!-- grow -->
+<div class="container">
+    {% if orders %}
+<table class="table table-hover">
+    <thead>
+    <th>Order No.</th>
+    <th>Order Date</th>
+    </thead>
+    <tbody>
+    {% for order in orders %}
+    <tr>
+        <td><a href="{% url 'orders:view-order' order.id %}">{{order.so_no}}</a></td>
+        <td>{{order.create_date}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+    {% else %}
+        <br/><h3>You haven't any orders yet.</h3><br/>
+    {% endif %}
+</div>
+<!--//content-->
+{% endblock %}

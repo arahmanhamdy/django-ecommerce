@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{%block title%}{{site_name}} - checkout{%endblock%}
+{%block content%}
+<!-- grow -->
+<div class="grow">
+    <div class="container">
+        <h2>Order - {{order.so_no}}</h2>
+    </div>
+</div>
+<!-- grow -->
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+        <th>Product</th>
+        <th>Qty</th>
+        <th>unit price</th>
+        <th>sub total</th>
+        </thead>
+        <tbody>
+        {% for line in order.orderline_set.all %}
+        <tr>
+            <td>
+                <a href="{% url 'product_detail' line.product_id.id line.product_id.slug%}">
+                    {{line.product_id.name}}
+                </a>
+            </td>
+            <td>{{line.qty}}</td>
+            <td>{{line.unit_price}}</td>
+            <td>{{line.total}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <h4>Order Date : {{order.create_date}}</h4><br/>
+    <h4>Total : ${{order.total}}</h4><br/>
+</div>
+<!--//content-->
+{% endblock %}

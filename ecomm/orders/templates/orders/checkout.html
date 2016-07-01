@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{%block title%}{{site_name}} - checkout{%endblock%}
+{%block content%}
+<!-- grow -->
+<div class="grow">
+    <div class="container">
+        <h2>Checkout</h2>
+    </div>
+</div>
+<!-- grow -->
+<div class="container">
+    <div class="check">
+        <h1>My Shopping Cart</h1>
+        <div class="col-md-9 cart-items simpleCart_items"></div>
+        <div class="col-md-3 cart-total">
+            <div class="price-details">
+                <h3>Price Details</h3>
+                <span>Total</span>
+                <span class="simpleCart_total total1"></span>
+                <span>Discount</span>
+                <span class="total1">---</span>
+                <div class="clearfix"></div>
+            </div>
+            <ul class="total_price">
+                <li class="last_price"><h4>TOTAL</h4></li>
+                <li class="last_price"><span class="simpleCart_total"></span></li>
+                <div class="clearfix"></div>
+            </ul>
+
+
+            <div class="clearfix"></div>
+            <a href="javascript:;" class="order simpleCart_checkout">Place Order</a>
+        </div>
+
+        <div class="clearfix"></div>
+    </div>
+</div>
+<!--//content-->
+{% endblock %}
+{% block script %}
+<script>
+    $(function(){
+
+    })
+</script>
+{% endblock %}
