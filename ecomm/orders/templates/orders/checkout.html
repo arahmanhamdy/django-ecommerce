@@ -41,7 +41,10 @@
 {% block script %}
 <script>
     $(function(){
-
+        cart = JSON.parse(localStorage.getItem("simpleCart_items"));
+        if(!Object.keys(cart).length){
+            $(".check").html("<h3>You haven't any products in your cart</h3>");
+        }
     })
 </script>
 {% endblock %}
