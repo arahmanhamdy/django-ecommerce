@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{%block title%}{{site_name}} - Home Page{%endblock%}
+{%block content%}
+<div class="banner">
+    <div class="container">
+        <div id="top" class="callbacks_container">
+            <ul class="rslides" id="slider">
+                <li>
+                    <div class="banner-text">
+                        <div class="banner-bg">
+                            <h3>Lorem Ipsum is </h3>
+
+                            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
+                                piece of
+                                classical Latin literature from 45 BC.</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="banner-text">
+                        <div class="banner-bg">
+                            <h3>There are many </h3>
+
+                            <p>Popular belief Contrary to , Lorem Ipsum is not simply random text. It has roots in a
+                                piece
+                                of classical Latin literature from 45 BC.</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="banner-text">
+                        <div class="banner-bg">
+                            <h3>Sed ut perspiciatis</h3>
+
+                            <p>Lorem Ipsum is not simply random text. Contrary to popular belief, It has roots in a
+                                piece of
+                                classical Latin literature from 45 BC.</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="cont">
+
+        <div class="content-top">
+            <h2>FEATURED PRODUCTS</h2>
+
+            <div class="grid-in">
+                {% for product in featured_products %}
+                <div class="col-md-3 grid-top men1">
+                    <a href="{% url 'product_detail' product.id product.slug%}"
+                       class="b-link-stripe b-animate-go thickbox">
+                        <img class="img-responsive" style="max-width=100%"
+                             src="{{product.productimage_set.all.0.image.url}}"/>
+
+                        <div class="b-wrapper">
+                            <h3 class="b-animate b-from-top top-in b-delay03 ">
+                                <span>{{product.name}}</span>
+                            </h3>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="content-top">
+            <h1>NEW PRODUCTS</h1>
+
+            <div class="grid-in">
+                {% for product in latest_products %}
+                <div class="col-md-3 grid-top simpleCart_shelfItem">
+                    <span class="hidden item_id">{{product.id}}</span>
+                    <a href="{% url 'product_detail' product.id product.slug%}"
+                       class="b-link-stripe b-animate-go thickbox">
+                        <img class="img-responsive item_image" src="{{product.productimage_set.all.0.image.url}}">
+
+                        <div class="b-wrapper">
+                            <h3 class="b-animate b-from-left b-delay03 ">
+                                <span class="item_name">{{product.name}}</span>
+                            </h3>
+                        </div>
+                    </a>
+
+                    <p>
+                        <a href="{% url 'product_detail' product.id product.slug%}">
+                            {{product.name}}
+                        </a>
+                    </p>
+                    <a href="#" class="item_add"><p class="number item_price"><i> </i>${{product.price}}</p></a>
+                </div>
+                {% endfor %}
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <!---->
+</div>
+{% endblock %}
+{% block script%}
+<script src="{% static 'pages/lib/js/responsiveslides.min.js'%}"></script>
+<script src="{% static 'pages/js/script.js'%}"></script>
+{%endblock%}
