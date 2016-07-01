@@ -1,4 +1,4 @@
-from config.settings.base import SITE_NAME
+from django.conf import settings
 from products.models import ProductCategory
 
 
@@ -20,5 +20,5 @@ def layout_processor(request):
     categories.append(categories_list[p * (last + 1):])
     return {
         'categories': categories,
-        'site_name': SITE_NAME
+        'site_name': settings.SITE_NAME
     }
