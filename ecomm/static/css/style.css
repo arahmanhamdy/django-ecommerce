@@ -325,7 +325,7 @@ i.inst:hover {
 /*--banner--*/
 
 .banner {
-  background: url(../images/1.jpg) no-repeat;
+  background: url(../pages/images/banner.jpg) no-repeat;
   background-size: cover;
   width: 100%;
   min-height: 560px;
@@ -410,7 +410,7 @@ ul.callbacks_tabs.callbacks1_tabs {
   text-decoration: none;
   height: 35px;
   width: 35px;
-  background: url("../images/img-sprite.png") no-repeat -13px -98px;
+  background: url("../pages/images/img-sprite.png") no-repeat -13px -98px;
 }
 
 .callbacks_nav.next {
@@ -423,6 +423,12 @@ ul.callbacks_tabs.callbacks1_tabs {
   padding: 14em 0 1em;
   color: #fff;
   width: 50%;
+}
+.banner-bg {
+  background-color:rgba(0,0,0,0.5);
+  border: 20px solid rgba(0, 0, 0, .5);
+  -webkit-background-clip: padding-box; /* for Safari */
+  background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
 }
 
 .banner-text h3 {
@@ -858,7 +864,7 @@ ul.social li i:hover {
   padding: 0 15px;
 }
 
-.contact-grid input[type="text"],.contact-grid textarea {
+.contact-grid input[type="text"], .contact-grid input[type="email"], .contact-grid textarea {
   width: 100%;
   padding: 1em;
   margin: 0.5em 0;
@@ -3395,4 +3401,8 @@ ul.qty li p {
   .amet-sed {
     width: 100%;
   }
+}
+
+.item-id{
+  display: none;
 }

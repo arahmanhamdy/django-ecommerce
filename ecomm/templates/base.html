@@ -11,13 +11,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <title>{% block title %}SeeChic{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    {% block css %}
     <link href="{% static 'lib/css/bootstrap.css' %}" rel="stylesheet"/>
     <link href="{% static 'lib/css/memenu.css' %}" rel="stylesheet"/>
     <link href="{% static 'css/style.css' %}" rel="stylesheet"/>
     <link href='//fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
     <link href='//fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
-    {% endblock %}
+    {% block css %}{% endblock %}
 </head>
 <body>
 <!--header-->
@@ -40,8 +39,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </div>
             <div class="header-left">
                 <div class="ca-r">
+                    {% if user.is_authenticated %}
+                    <h5>Welcome {{user.username}}</h5>
+                    {% endif %}
                     <div class="cart box_1">
-                        <a href="#">
+                        <a href="{% url 'orders:checkout' %}">
                             <h3>
                                 <div class="total">
                                     <span class="simpleCart_total"></span>
@@ -62,18 +64,42 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <div class="container">
         <div class="head-top">
             <div class="logo">
-                <h1><a href="#">SeeChic</a></h1>
+                <h1><a href="{% url 'pages:index' %}">SeeChic</a></h1>
             </div>
             <div class="h_menu4">
                 <ul class="memenu skyblue">
+                    <li><a class="color6" href="{% url 'pages:index' %}">Home</a></li>
+                    <li><a class="color1" href="#">Categories</a>
+
+                        <div class="mepanel">
+                            <div class="row">
+                                {% for category_part in categories %}
+                                <div class="col1">
+                                    <div class="h_nav">
+                                        <ul>
+                                            {% for category in category_part %}
+                                            <li>
+                                                <a href="{% url 'category_detail' category.id category.slug%}">
+                                                    {{category.name}}
+                                                </a>
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </li>
                     {% if user.is_authenticated %}
-                        <li><a class="color4" href="{% url 'logout' %}">Logout</a></li>
-                        <li><a class="color4" href="{% url 'password_change' %}">Change Password</a></li>
+                    <li><a class="color4" href="{% url 'orders:my-orders' %}">My Orders</a></li>
+                    <li><a class="color4" href="{% url 'logout' %}">Logout</a></li>
+                    <li><a class="color4" href="{% url 'password_change' %}">Change Password</a></li>
                     {% else %}
-                        <li><a class="color4" href="{% url 'login' %}">Login</a></li>
-                        <li><a class="color4" href="{% url 'register' %}">Register</a></li>
+                    <li><a class="color4" href="{% url 'login' %}">Login</a></li>
+                    <li><a class="color4" href="{% url 'register' %}">Register</a></li>
                     {% endif %}
-                    <li><a class="color6" href="#">Contact</a></li>
+                    <li><a class="color6" href="{% url 'pages:contact' %}">Contact</a></li>
                 </ul>
             </div>
 
@@ -86,17 +112,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <div class="footer">
     <div class="container">
         <div class="footer-top-at">
-            <div class="col-md-3 amet-sed">
-                <h4>MORE INFO</h4>
+            <div class="col-md-4 amet-sed">
+                <h4>CATEGORIES</h4>
                 <ul class="nav-bottom">
-                    <li><a href="#">How to order</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Location</a></li>
-                    <li><a href="#">Shipping</a></li>
-                    <li><a href="#">Membership</a></li>
+                    {% for category in categories.0|slice:":6" %}
+                    <li>
+                        <a href="{% url 'category_detail' category.id category.slug %}">
+                            {{category.name}}
+                        </a>
+                    </li>
+                    {% endfor %}
                 </ul>
+
             </div>
-            <div class="col-md-3 amet-sed col-md-offset-6">
+            <div class="col-md-4 amet-sed">
                 <h4>CONTACT US</h4>
 
                 <p>
@@ -113,11 +142,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             Design by <a href="http://w3layouts.com/" target="_blank">W3layouts</a></p>
     </div>
 </div>
-{% block script %}
 <script src="{% static 'lib/js/jquery.min.js' %}"></script>
 <script src="{% static 'lib/js/memenu.js' %}"></script>
-<script src="{% static 'lib/js/simpleCart.min.js' %}"></script>
+<script src="{% static 'lib/js/simpleCart.js' %}"></script>
 <script src="{% static 'js/main.js' %}"></script>
-{% endblock %}
+{% block script %}{% endblock %}
 </body>
 </html>
